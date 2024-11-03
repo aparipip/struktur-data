@@ -1,3 +1,9 @@
+/*
+Nama	: Arif Nur Cahyo
+Kelas	: Struktur Data (F)
+NPM		: 23081010192
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
