@@ -30,6 +30,24 @@ void pushData(int data)
     }
 }
 
+void popData() 
+{
+    node *temp;
+
+    if (count == 0) 
+	{
+        printf("\nData kosong!!!\n");
+    } 
+	else 
+	{
+        temp = top;
+        top = top->next;
+        free(temp);
+        count--;
+        printf("\nData paling atas berhasil dihapus\n");
+    }
+}
+
 void displayData() 
 {
     node *temp;
@@ -59,8 +77,9 @@ int main()
         printf("    Program Stack    \n");
         printf("=====================\n");
         printf("1. Push data\n");
-        printf("2. List data\n");
-        printf("3. Exit program\n");
+        printf("2. Pop data\n");
+        printf("3. List data\n");
+        printf("4. Exit program\n");
         printf("\nPilih menu: ");
         scanf("%d", &pilih);
         getchar();  
@@ -73,19 +92,22 @@ int main()
                 pushData(data);
                 break;
             case 2:
-                displayData();
+                popData();
                 break;
             case 3:
-                printf("\nTerima kasih telah menggunakan program ini\n\n");
+                displayData();
+                break;
+            case 4:
+                printf("\nTerima kasih telah menggunakan program ini\n");
                 break;
             default:
-                printf("\nPilihan tidak valid. Silakan coba lagi.\n\n");
+                printf("\nPilihan tidak valid. Silakan coba lagi.\n");
         }
 
         printf("\nPress Enter to continue...");
         getchar();
 
-    } while (pilih != 3);
+    } while (pilih != 4);
 
     return 0;
 }
