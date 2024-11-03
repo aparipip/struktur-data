@@ -1,7 +1,7 @@
 /*
 Nama	: Arif Nur Cahyo
 Kelas	: Struktur Data (F)
-NPM		: 23081010192
+NPM	: 23081010192
 */
 
 #include <stdio.h>
