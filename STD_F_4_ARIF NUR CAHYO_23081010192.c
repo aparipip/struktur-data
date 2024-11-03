@@ -48,6 +48,18 @@ void popData()
     }
 }
 
+void topData() 
+{
+    if (count == 0) 
+	{
+        printf("\nData kosong!!!\n");
+    } 
+	else 
+	{
+        printf("\nAngka paling atas: %d\n", top->data);   
+    }
+}
+
 void displayData() 
 {
     node *temp;
@@ -67,6 +79,11 @@ void displayData()
     }
 }
 
+int countData() 
+{
+    return count;
+}
+
 int main() 
 {
     int pilih, data;
@@ -79,7 +96,9 @@ int main()
         printf("1. Push data\n");
         printf("2. Pop data\n");
         printf("3. List data\n");
-        printf("4. Exit program\n");
+        printf("4. Top data\n");
+        printf("5. Count data\n");
+        printf("6. Exit program\n");
         printf("\nPilih menu: ");
         scanf("%d", &pilih);
         getchar();  
@@ -98,6 +117,12 @@ int main()
                 displayData();
                 break;
             case 4:
+                topData();
+                break;
+            case 5:
+                printf("\nBanyak Data: %d\n", countData());
+                break;
+            case 6:
                 printf("\nTerima kasih telah menggunakan program ini\n");
                 break;
             default:
@@ -107,7 +132,7 @@ int main()
         printf("\nPress Enter to continue...");
         getchar();
 
-    } while (pilih != 4);
+    } while (pilih != 6);
 
     return 0;
 }
