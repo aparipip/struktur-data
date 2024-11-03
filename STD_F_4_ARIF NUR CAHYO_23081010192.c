@@ -1,46 +1,93 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <conio.h>
+#include <stdbool.h>
 
+typedef struct node {
+    int data;
+    struct node *next;
+} node;
+
+node *top = NULL;
 int max = 5;
-char arrayBuku[5][50];
-int top = 0;
+int count = 0;
 
-void pushArray(char data[])
+void pushData(int data) 
 {
-	if(top >= max)
+    node *newNode;
+
+    if (count == max) 
 	{
-		printf("Data penuh!!!\n");
-	}
-	else
+        printf("\nData gagal diinput dikarenakan data full!!!\n");
+    } 
+	else 
 	{
-		strcpy(arrayBuku[top], data);
-		top++;
-	}
+        newNode = (node*)malloc(sizeof(node));
+        newNode->data = data;     
+        newNode->next = top;
+        top = newNode;
+        count++;
+        printf("\nData berhasil ditambahkan\n");
+    }
 }
 
-void displayArray()
+void displayData() 
 {
-	int i;
-	
-	printf("Data stack array\n");
-	
-	for(i = top-1; i >= 0; i--)
+    node *temp;
+
+    if (count == 0) 
 	{
-		printf("Data : %s\n", arrayBuku[i]);
-	}
+        printf("\nData kosong!!!\n");
+    } 
+	else 
+	{
+        temp = top;
+        while (temp != NULL) 
+		{
+            printf("Angka: %d\n", temp->data);   
+            temp = temp->next;
+        }
+    }
 }
 
-int main()
+int main() 
 {
-	pushArray("Matematika");
-	pushArray("Fisika");
-	pushArray("Biologi");
-	displayArray();
-	
-	printf("==================\n");
-	
-	pushArray("Geografi");
-	displayArray();
+    int pilih, data;
+
+    do {
+    	system("cls");
+        printf("=====================\n");
+        printf("    Program Stack    \n");
+        printf("=====================\n");
+        printf("1. Push data\n");
+        printf("2. List data\n");
+        printf("3. Exit program\n");
+        printf("\nPilih menu: ");
+        scanf("%d", &pilih);
+        getchar();  
+
+        switch (pilih) {
+            case 1:
+                printf("Masukkan data (integer): ");
+                scanf("%d", &data);
+                getchar();  
+                pushData(data);
+                break;
+            case 2:
+                displayData();
+                break;
+            case 3:
+                printf("\nTerima kasih telah menggunakan program ini\n\n");
+                break;
+            default:
+                printf("\nPilihan tidak valid. Silakan coba lagi.\n\n");
+        }
+
+        printf("\nPress Enter to continue...");
+        getchar();
+
+    } while (pilih != 3);
+
+    return 0;
 }
+
+
