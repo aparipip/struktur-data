@@ -11,6 +11,30 @@ node *top = NULL;
 int max = 5;
 int count = 0;
 
+bool isFull() 
+{
+    if (count == max)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool isEmpty() 
+{
+    if (count == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void pushData(int data) 
 {
     node *newNode;
@@ -98,7 +122,9 @@ int main()
         printf("3. List data\n");
         printf("4. Top data\n");
         printf("5. Count data\n");
-        printf("6. Exit program\n");
+        printf("6. Data is Empty?\n");
+        printf("7. Data is Full?\n");
+        printf("8. Exit program\n");
         printf("\nPilih menu: ");
         scanf("%d", &pilih);
         getchar();  
@@ -123,6 +149,12 @@ int main()
                 printf("\nBanyak Data: %d\n", countData());
                 break;
             case 6:
+                printf("\nApakah data kosong? %s\n", isEmpty() ? "Ya" : "Tidak");
+                break;
+            case 7:
+                printf("\nApakah data penuh? %s\n", isFull() ? "Ya" : "Tidak");
+                break;
+            case 8:
                 printf("\nTerima kasih telah menggunakan program ini\n");
                 break;
             default:
@@ -132,7 +164,7 @@ int main()
         printf("\nPress Enter to continue...");
         getchar();
 
-    } while (pilih != 6);
+    } while (pilih != 8);
 
     return 0;
 }
